@@ -26,6 +26,9 @@ class ListadoPersonajesDbz : AppCompatActivity() {
         personajesAdapter = PersonajeAdapater(getPersonajes(),this)
 
 
+        rvPersonajes.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+        rvPersonajes.adapter = personajesAdapter
+
     }
 
     private fun getPersonajes() : MutableList<Personaje>{

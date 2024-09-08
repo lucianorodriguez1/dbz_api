@@ -7,28 +7,27 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PersonajeAdapater(var personajes: MutableList<Personaje>, var context: Context):
-    RecyclerView.Adapter<PersonajeAdapater.PersonajeViewHolder>() {
+class PersonajeAdapter(var personajes: MutableList<Personaje>, var context: Context):
+    RecyclerView.Adapter<PersonajeAdapter.PersonajeViewHolder>() {
 
-    class PersonajeViewHolder(view: View): RecyclerView .ViewHolder(view){
-
-        lateinit var nombre: TextView
+    class PersonajeViewHolder(view: View): RecyclerView.ViewHolder(view) {
+        lateinit var tvPersonaje: TextView
 
         init {
-            nombre = view.findViewById(R.id.tv_nombre)
+            tvPersonaje = view.findViewById(R.id.tv_personaje)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonajeViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_personaje,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_personaje, parent, false)
         return PersonajeViewHolder(view)
     }
 
     override fun getItemCount() = personajes.size
 
     override fun onBindViewHolder(holder: PersonajeViewHolder, position: Int) {
-        val item = personajes.get(position)
-        holder.nombre.text = item.nombre
+        val item = personajes[position]
+        // Aquí se establece el texto en el formato deseado
+        holder.tvPersonaje.text = "ID: ${item.id} Nombre: ${item.nombre}"
     }
-
 }

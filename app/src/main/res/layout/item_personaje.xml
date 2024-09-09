@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:weightSum="1"
-    >
+    android:layout_marginBottom="15sp">
 
 
     <TextView
         android:id="@+id/tv_nombre"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:layout_weight="0.5"
+        android:textSize="18sp"
+
         />
-</LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnVer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/tv_nombre"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="ver"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginStart="80dp">
+
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

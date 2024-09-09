@@ -9,8 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PersonajeAdapater(var personajes: MutableList<Personaje>, var context: Context):
-    RecyclerView.Adapter<PersonajeAdapater.PersonajeViewHolder>() {
+class PersonajesAdapter(var personajes: MutableList<Personaje>, var context: Context):
+    RecyclerView.Adapter<PersonajesAdapter.PersonajeViewHolder>() {
 
     class PersonajeViewHolder(view: View): RecyclerView .ViewHolder(view){
 

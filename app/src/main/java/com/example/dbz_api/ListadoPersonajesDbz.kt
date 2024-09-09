@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ListadoPersonajesDbz : AppCompatActivity() {
 
     lateinit var rvPersonajes : RecyclerView
-    lateinit var personajesAdapter : PersonajeAdapater
+    lateinit var personajesAdapter : PersonajeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +23,7 @@ class ListadoPersonajesDbz : AppCompatActivity() {
         }
 
         rvPersonajes = findViewById(R.id.rvPersonajes)
-        personajesAdapter = PersonajeAdapater(getPersonajes(),this)
+        personajesAdapter = PersonajeAdapter(getPersonajes(),this)
 
 
         rvPersonajes.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)

@@ -9,12 +9,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.dbz_api.baseDeDatos.FuncBBDD
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var editTextNombre : EditText
     lateinit var editEmail : EditText
     lateinit var editContraseña : EditText
     lateinit var buttonRegistrar : Button
+    lateinit var basededatos : FuncBBDD
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,6 +31,7 @@ class RegisterActivity : AppCompatActivity() {
         editEmail = findViewById(R.id.editEmail)
         editContraseña = findViewById(R.id.editContraseña)
         buttonRegistrar = findViewById(R.id.buttonRegistrar)
+        basededatos = FuncBBDD()
 
         buttonRegistrar.setOnClickListener{
             val nombre = editTextNombre.text.toString()
@@ -38,6 +42,8 @@ class RegisterActivity : AppCompatActivity() {
 
             }else{
                 Toast.makeText(this, "Registro completado con exito", Toast.LENGTH_SHORT).show()
+
+                basededatos.insertarEnBd(this,nombre,email,contraseña)
 
                 var intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)

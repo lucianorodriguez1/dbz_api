@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var cbRecordarusuario: CheckBox
     lateinit var btnRgegristarse: Button
     lateinit var btnIniciarsesion: Button
-
+    lateinit var toolbar: androidx.appcompat.widget.Toolbar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,11 +29,16 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        toolbar = findViewById(R.id.toolbar)
+        toolbar.setLogo(R.drawable.ic_android_black_24dp)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title="tabajo practico"
         etUsuario = findViewById(R.id.etUsuario)
         etPassword = findViewById(R.id.etPassword)
         btnRgegristarse = findViewById(R.id.btnRegistrarse)
         cbRecordarusuario = findViewById(R.id.cbRecordarusuario)
         btnIniciarsesion = findViewById(R.id.btnIniciarsesion)
+
 
         btnRgegristarse.setOnClickListener {
             Toast.makeText(this, "crear usuario", Toast.LENGTH_SHORT).show()
@@ -47,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
             } else {
 
-                var intent = Intent(this, ListadoPersonajesDbz::class.java)
+                var intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }
 

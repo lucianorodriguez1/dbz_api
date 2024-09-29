@@ -12,6 +12,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.dbz_api.baseDeDatos.FuncBBDD
+import com.example.dbz_api.baseDeDatos.SQLite
 
 class LoginActivity : AppCompatActivity() {
     lateinit var etUsuario: EditText
@@ -20,6 +22,10 @@ class LoginActivity : AppCompatActivity() {
     lateinit var btnRgegristarse: Button
     lateinit var btnIniciarsesion: Button
     lateinit var toolbar: androidx.appcompat.widget.Toolbar
+    lateinit var basededatos : FuncBBDD
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
         btnRgegristarse = findViewById(R.id.btnRegistrarse)
         cbRecordarusuario = findViewById(R.id.cbRecordarusuario)
         btnIniciarsesion = findViewById(R.id.btnIniciarsesion)
+        basededatos = FuncBBDD()
 
 
         btnRgegristarse.setOnClickListener {
@@ -46,6 +53,10 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+        val dbHelper = SQLite(this, "login", null, 1)
+        val db = dbHelper.writableDatabase
+
         btnIniciarsesion.setOnClickListener {
             var mensaje = "boton iniciar sesion"
             if (etUsuario.text.toString().isEmpty() || etPassword.text.toString().isEmpty()) {
@@ -53,8 +64,19 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
             } else {
 
-                var intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                val verificacionDeInicioSesion = basededatos.verificarLogin(this,etUsuario.text.toString(),etPassword.text.toString())
+
+                if(verificacionDeInicioSesion != -1){
+
+                    var intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                else{
+
+                    Toast.makeText(this,"Usuario o contraseña incorrectos",Toast.LENGTH_LONG).show()
+                }
+
+
             }
 
         }

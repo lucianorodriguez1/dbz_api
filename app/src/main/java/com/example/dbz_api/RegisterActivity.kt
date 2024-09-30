@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.dbz_api.baseDeDatos.FuncBBDD
@@ -17,7 +18,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var editContraseña : EditText
     lateinit var buttonRegistrar : Button
     lateinit var basededatos : FuncBBDD
-
+    lateinit var toolbar: Toolbar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,6 +28,10 @@ class RegisterActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        toolbar = findViewById(R.id.toolbar)
+        toolbar.setLogo(R.drawable.ic_android_black_24dp)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title="tabajo practico"
         editTextNombre = findViewById(R.id.editTextNombre)
         editEmail = findViewById(R.id.editEmail)
         editContraseña = findViewById(R.id.editContraseña)

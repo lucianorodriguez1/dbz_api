@@ -47,12 +47,25 @@ class LoginActivity : AppCompatActivity() {
         basededatos = FuncBBDD()
 
 
+        //TEST
+            var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales),
+                MODE_PRIVATE);
+            var usuarioGuardado = preferencias.getString(resources.getString(R.string.nombre_usuario),"");
+            var passwordGuardado = preferencias.getString(resources.getString(R.string.password_usuario),"");
+
+        Log.d("SharedPreferences", "Usuario guardado: $usuarioGuardado")
+        Log.d("SharedPreferences", "Contraseña guardada: $passwordGuardado")
+        if(usuarioGuardado != "" && passwordGuardado != ""){
+            var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+        //FIN TEST
+
         btnRgegristarse.setOnClickListener {
             Toast.makeText(this, "crear usuario", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, TerminosCondiciones::class.java)
             startActivity(intent)
         }
-
 
         val dbHelper = SQLite(this, "login", null, 1)
         val db = dbHelper.writableDatabase
@@ -66,6 +79,18 @@ class LoginActivity : AppCompatActivity() {
 
                 val verificacionDeInicioSesion = basededatos.verificarLogin(this,etUsuario.text.toString(),etPassword.text.toString())
 
+                //test
+                if(cbRecordarusuario.isChecked){
+                    var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales),
+                        MODE_PRIVATE);
+
+                    preferencias.edit().putString(resources.getString(R.string.nombre_usuario), etUsuario.text.toString()).apply();
+                    //preferencias.edit().putString(resources.getString(R.string.password_usuario), etPassword.text.toString()).apply()
+
+                    Log.d("SharedPreferences", "Usuario guardado: $usuarioGuardado")
+                    Log.d("SharedPreferences", "Contraseña guardada: $passwordGuardado")
+                }
+                //fin test
                 if(verificacionDeInicioSesion != -1){
 
                     var intent = Intent(this, MainActivity::class.java)
@@ -81,5 +106,4 @@ class LoginActivity : AppCompatActivity() {
 
         }
     }
-
 }

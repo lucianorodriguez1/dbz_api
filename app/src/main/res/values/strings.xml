@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">dbz_api</string>
     <string name="item_listado">lista de personajes</string>
-    <string name="saludo">bienvenidos</string>
-    <string name="titulo">dbdz api</string>
+    <string name="saludo">Bienvenidos a la APP!</string>
+    <string name="titulo_toolbar">DBZ API</string>
     <string name="nombre_usuario">Nombre</string>
     <string name="password_usuario">Password</string>
     <string name="sp_credenciales">credenciales</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
 </resources>

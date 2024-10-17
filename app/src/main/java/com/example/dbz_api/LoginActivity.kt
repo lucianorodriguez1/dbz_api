@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         toolbar.setLogo(R.drawable.ic_android_black_24dp)
         setSupportActionBar(toolbar)
-        supportActionBar!!.title="tabajo practico"
+        supportActionBar!!.title="trabajo practico"
         etUsuario = findViewById(R.id.etUsuario)
         etPassword = findViewById(R.id.etPassword)
         btnRgegristarse = findViewById(R.id.btnRegistrarse)
@@ -53,12 +53,11 @@ class LoginActivity : AppCompatActivity() {
             var usuarioGuardado = preferencias.getString(resources.getString(R.string.nombre_usuario),"");
             var passwordGuardado = preferencias.getString(resources.getString(R.string.password_usuario),"");
 
-        Log.d("SharedPreferences", "Usuario guardado: $usuarioGuardado")
-        Log.d("SharedPreferences", "Contraseña guardada: $passwordGuardado")
         if(usuarioGuardado != "" && passwordGuardado != ""){
             var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
         //FIN TEST
 
         btnRgegristarse.setOnClickListener {
@@ -76,34 +75,26 @@ class LoginActivity : AppCompatActivity() {
                 mensaje += " completar datos"
                 Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
             } else {
+                // Mover toda la lógica de verificación de login al callback
+                basededatos.verificarLogin(this, etUsuario.text.toString(), etPassword.text.toString()) { verificacionDeInicioSesion ->
+                    // Si el checkbox está marcado, guardamos las credenciales
+                    if (cbRecordarusuario.isChecked) {
+                        val preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+                        preferencias.edit().putString(resources.getString(R.string.nombre_usuario), etUsuario.text.toString()).apply()
+                        preferencias.edit().putString(resources.getString(R.string.password_usuario), etPassword.text.toString()).apply()
+                    }
 
-                val verificacionDeInicioSesion = basededatos.verificarLogin(this,etUsuario.text.toString(),etPassword.text.toString())
-
-                //test
-                if(cbRecordarusuario.isChecked){
-                    var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales),
-                        MODE_PRIVATE);
-
-                    preferencias.edit().putString(resources.getString(R.string.nombre_usuario), etUsuario.text.toString()).apply();
-                    //preferencias.edit().putString(resources.getString(R.string.password_usuario), etPassword.text.toString()).apply()
-
-                    Log.d("SharedPreferences", "Usuario guardado: $usuarioGuardado")
-                    Log.d("SharedPreferences", "Contraseña guardada: $passwordGuardado")
+                    if (verificacionDeInicioSesion != -1) {
+                        // Login exitoso
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        // Login fallido
+                        Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show()
+                    }
                 }
-                //fin test
-                if(verificacionDeInicioSesion != -1){
-
-                    var intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
-                else{
-
-                    Toast.makeText(this,"Usuario o contraseña incorrectos",Toast.LENGTH_LONG).show()
-                }
-
-
             }
-
         }
+
     }
 }

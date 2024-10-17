@@ -5,4 +5,10 @@
     android:id="@+id/item_listado"
     android:title="@string/item_listado"
     app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/item_cerrar_sesion"
+        android:title="@string/cerrar_sesion"
+        app:showAsAction="never" />
+
 </menu>

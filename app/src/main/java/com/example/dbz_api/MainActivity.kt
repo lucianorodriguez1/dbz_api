@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setLogo(R.drawable.ic_android_black_24dp)
-        supportActionBar!!.title="tabajo practico"
+        supportActionBar!!.title=getString(R.string.titulo_toolbar)
 
 
 
@@ -35,10 +35,23 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.item_listado) {
-            val intent = Intent(this, ListadoPersonajesDbz::class.java)
-            startActivity(intent)
+        when (item.itemId) {
+            R.id.item_listado -> {
+                val intent = Intent(this, ListadoPersonajesDbz::class.java)
+                startActivity(intent)
+            }
+            R.id.item_cerrar_sesion -> {
+                // Lógica para cerrar sesión
+                val preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+                preferencias.edit().clear().apply() // Eliminar las credenciales guardadas
+
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
+
 }

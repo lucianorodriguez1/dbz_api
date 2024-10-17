@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ListadoPersonajesDbz : AppCompatActivity() {
 
+
     lateinit var rvPersonajes : RecyclerView
     lateinit var personajesAdapater : PersonajeAdapater
 

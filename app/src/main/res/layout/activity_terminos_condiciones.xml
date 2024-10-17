@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TerminosCondiciones">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/primary_layout"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="Términos y condiciones"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:textSize="16sp"
+            android:text="1. Aceptación de los Términos\n\nAl usar esta aplicación, aceptas cumplir con estos términos y condiciones. Si no estás de acuerdo, por favor no uses la Aplicación.\n\n2. Modificaciones de los Términos\n\nNos reservamos el derecho de modificar estos Términos en cualquier momento. Las modificaciones serán efectivas a partir de la publicación en la Aplicación.\n\n3. Uso de la Aplicación\n\n- Licencia de Uso: Te concedemos una licencia no exclusiva, intransferible y revocable para usar la Aplicación únicamente para tus fines personales.\n- Prohibiciones: No puedes utilizar la Aplicación de manera ilegal o que pueda dañar nuestros servidores.\n\n4. Propiedad Intelectual\n\nTodos los derechos relacionados con la Aplicación y su contenido son propiedad de [Nombre de tu Empresa].\n\n5. Recopilación y Uso de Información\n\nConsulta nuestra Política de Privacidad para conocer cómo protegemos tu información.\n\n6. Limitación de Responsabilidad\n\nLa Aplicación se proporciona “tal cual”. No garantizamos que sea libre de errores. No seremos responsables de daños indirectos.\n\n7. Indemnización\n\nAceptas indemnizar a [Nombre de tu Empresa] de cualquier reclamación relacionada con tu uso de la Aplicación.\n\n8. Ley Aplicable\n\nEstos Términos se regirán por las leyes de [Tu País/Estado]. Cualquier disputa estará sujeta a la jurisdicción de los tribunales de [Tu Ciudad/Estado].\n\n9. Contacto\n\nPara preguntas, contáctanos en: [Nombre de tu Empresa], [Dirección], [Correo Electrónico], [Teléfono]."/>
+    </ScrollView>
+    <Button
+        android:id="@+id/btn_aceptar_tyc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="aceptar"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        />
+</LinearLayout>

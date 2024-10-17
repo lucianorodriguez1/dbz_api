@@ -172,4 +172,4 @@ class LoginActivity : AppCompatActivity() {
         val notificationManager = NotificationManagerCompat.from(this)
         notificationManager.notify(1, builder.build())
     }
-}
+

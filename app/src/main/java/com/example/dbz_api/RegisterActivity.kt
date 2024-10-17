@@ -13,14 +13,12 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.dbz_api.baseDeDatos.FuncBBDD
 
 class RegisterActivity : AppCompatActivity() {
-
     lateinit var editTextNombre : EditText
     lateinit var editEmail : EditText
     lateinit var editContraseña : EditText
     lateinit var buttonRegistrar : Button
     lateinit var basededatos : FuncBBDD
     lateinit var toolbar: Toolbar
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

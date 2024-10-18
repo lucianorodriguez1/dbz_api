@@ -18,7 +18,7 @@ class ListadoPersonajesDbz : AppCompatActivity() {
 
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        toolbar.setLogo(R.drawable.ic_android_black_24dp)
+        toolbar.setLogo(R.drawable.esfera)
         supportActionBar!!.title=getString(R.string.titulo_toolbar)
 
         // Aquí es donde cargamos el fragmento

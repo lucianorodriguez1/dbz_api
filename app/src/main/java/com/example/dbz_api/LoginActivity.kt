@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
         btnIniciarsesion = findViewById(R.id.btnIniciarsesion)
         basededatos = FuncBBDD()
 
-        // Crear canal de notificación
+
         crearCanalNotificacion()
 
         var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
@@ -93,11 +93,11 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                     if (verificacionDeInicioSesion != -1) {
-                        // Login exitoso
+
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                     } else {
-                        // Login fallido
+
                         Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show()
                     }
                 }

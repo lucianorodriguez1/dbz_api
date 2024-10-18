@@ -23,7 +23,7 @@ class InformacionDePersonaje : AppCompatActivity() {
         }
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        toolbar.setLogo(R.drawable.ic_android_black_24dp)
+        toolbar.setLogo(R.drawable.esfera)
         supportActionBar!!.title="DBZ API"
 
 

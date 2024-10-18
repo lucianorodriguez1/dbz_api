@@ -11,7 +11,6 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
@@ -43,9 +42,6 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-
-
-
         etUsuario = findViewById(R.id.etUsuario)
         etPassword = findViewById(R.id.etPassword)
         btnRgegristarse = findViewById(R.id.btnRegistrarse)
@@ -56,7 +52,6 @@ class LoginActivity : AppCompatActivity() {
         // Crear canal de notificación
         crearCanalNotificacion()
 
-        // TEST
         var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
         var usuarioGuardado = preferencias.getString(resources.getString(R.string.nombre_usuario), "")
         var passwordGuardado = preferencias.getString(resources.getString(R.string.password_usuario), "")
@@ -67,16 +62,10 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //FIN TEST
-
         btnRgegristarse.setOnClickListener {
-            Toast.makeText(this, "crear usuario", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, TerminosCondiciones::class.java)
             startActivity(intent)
         }
-
-        val dbHelper = SQLite(this, "login", null, 1)
-        val db = dbHelper.writableDatabase
 
         btnIniciarsesion.setOnClickListener {
             var mensaje = "boton iniciar sesion"
@@ -162,8 +151,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun mostrarNotificacion() {
-        Log.d("LoginActivity", "Mostrando notificación")
-
         if(NotificationManagerCompat.from(this).areNotificationsEnabled()) {
             val builder = NotificationCompat.Builder(this, "canal_id")
                 .setSmallIcon(R.drawable.mi_imagen)

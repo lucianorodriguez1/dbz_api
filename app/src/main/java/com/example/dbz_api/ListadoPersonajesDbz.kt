@@ -9,7 +9,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.dbz_api.Models.PersonajeApiResponse
 import com.example.dbz_api.Models.PersonajeResponse
 import com.example.dbz_api.databinding.ActivityListadoPersonajesDbzBinding
@@ -75,7 +74,7 @@ class ListadoPersonajesDbz : AppCompatActivity() {
 
         return Retrofit.Builder()
             .baseUrl("https://dragonball-api.com/api/")
-            .addConverterFactory(GsonConverterFactory.create()) //Aca se puede utilizar moshi
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 

@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var cbRecordarusuario: CheckBox
     lateinit var btnRgegristarse: Button
     lateinit var btnIniciarsesion: Button
-    lateinit var toolbar: androidx.appcompat.widget.Toolbar
+
     lateinit var basededatos: FuncBBDD
 
 
@@ -43,10 +43,8 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        toolbar = findViewById(R.id.toolbar)
-        toolbar.setLogo(R.drawable.ic_android_black_24dp)
-        setSupportActionBar(toolbar)
-        supportActionBar!!.title = "trabajo práctico"
+
+
 
         etUsuario = findViewById(R.id.etUsuario)
         etPassword = findViewById(R.id.etPassword)
@@ -116,7 +114,7 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-            }
+
     }
 
     private fun crearCanalNotificacion() {
@@ -165,13 +163,20 @@ class LoginActivity : AppCompatActivity() {
 
     private fun mostrarNotificacion() {
         Log.d("LoginActivity", "Mostrando notificación")
-        val builder = NotificationCompat.Builder(this, "canal_id")
-            .setSmallIcon(R.drawable.mi_imagen)
-            .setContentTitle("Usuario Recordado")
-            .setContentText("Has activado la opción de recordar usuario.")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
-        val notificationManager = NotificationManagerCompat.from(this)
-        notificationManager.notify(1, builder.build())
+        if(NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+            val builder = NotificationCompat.Builder(this, "canal_id")
+                .setSmallIcon(R.drawable.mi_imagen)
+                .setContentTitle("Usuario Recordado")
+                .setContentText("Has activado la opción de recordar usuario.")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+            val notificationManager = NotificationManagerCompat.from(this)
+            notificationManager.notify(1, builder.build())
+        }else{
+
+            Toast.makeText(this,"Las notificaciones fueron deshabilitadas",Toast.LENGTH_SHORT).show()
+            }
     }
 
+}

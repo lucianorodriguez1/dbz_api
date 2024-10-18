@@ -12,184 +12,178 @@
         android:id="@+id/toolbar"
         layout="@layout/primary_layout"
         />
-    <TextView
-        android:id="@+id/id_label"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/contenedorImagen"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ID:"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="65dp"
-        android:layout_marginStart="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:background="@drawable/fondo1"
+        android:layout_marginBottom="5dp">
+        <ImageView
+            android:id="@+id/imgPersonaje"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/ic_person">
 
-    <TextView
-        android:id="@+id/id_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/id_label"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp" />
+        </ImageView>
+    </LinearLayout>
 
-    <!-- Name -->
-    <TextView
-        android:id="@+id/name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name:"
-        app:layout_constraintTop_toBottomOf="@id/id_label"
+    <LinearLayout
+        android:id="@+id/contenedorTextos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/contenedorImagen"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
+        android:background="@drawable/fondoficha">
 
-    <TextView
-        android:id="@+id/name_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        app:layout_constraintTop_toBottomOf="@id/id_label"
-        app:layout_constraintStart_toEndOf="@+id/name_label"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp" />
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:padding="8dp"
+            android:layout_marginStart="12dp"
+            android:textColor="@color/letrasFicha"
+            tools:text="Nombre">
+        </TextView>
 
-    <!-- Ki -->
-    <TextView
-        android:id="@+id/ki_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ki:"
-        app:layout_constraintTop_toBottomOf="@id/name_label"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="6"
+            android:padding="16sp"
+            android:layout_gravity="center">
 
-    <TextView
-        android:id="@+id/ki_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        app:layout_constraintTop_toBottomOf="@id/name_label"
-        app:layout_constraintStart_toEndOf="@+id/ki_label"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Base Ki"
+                android:textColor="@color/letrasFicha"
+                android:layout_marginStart="12dp"
+                android:textStyle="bold"
+                android:layout_column="0" />
+            <TextView
+                android:id="@+id/baseKi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/letrasFicha"
+                tools:text="10000"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="8dp"
+                android:layout_column="0"
+                android:layout_row="1"/>
 
-    <!-- Max Ki -->
-    <TextView
-        android:id="@+id/max_ki_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Max Ki:"
-        app:layout_constraintTop_toBottomOf="@id/ki_label"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/letrasFicha"
+                android:text="Total Ki"
+                android:layout_marginStart="12dp"
+                android:textStyle="bold"
+                android:layout_column="0"
+                android:layout_row="2"/>
+            <TextView
+                android:id="@+id/totalKi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/letrasFicha"
+                tools:text="90 septillon"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="8dp"
+                android:layout_column="0"
+                android:layout_row="3"/>
 
-    <TextView
-        android:id="@+id/max_ki_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        app:layout_constraintTop_toBottomOf="@id/ki_label"
-        app:layout_constraintStart_toEndOf="@+id/max_ki_label"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/letrasFicha"
+                android:text="Race"
+                android:layout_marginStart="12dp"
+                android:textStyle="bold"
+                android:layout_column="0"
+                android:layout_row="4"/>
+            <TextView
+                android:id="@+id/race"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/letrasFicha"
+                tools:text="Saiyan"
+                android:layout_marginStart="12dp"
+                android:layout_column="0"
+                android:layout_row="5"/>
 
-    <!-- Race -->
-    <TextView
-        android:id="@+id/race_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Race:"
-        app:layout_constraintTop_toBottomOf="@id/max_ki_label"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
+            <!-- Separador en columna 1 -->
 
-    <TextView
-        android:id="@+id/race_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        app:layout_constraintTop_toBottomOf="@id/max_ki_label"
-        app:layout_constraintStart_toEndOf="@+id/race_label"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/letrasFicha"
+                android:text="Afilliation"
+                android:textStyle="bold"
+                android:layout_marginEnd="12dp"
+                android:layout_column="2"
+                android:layout_row="0"/>
+            <TextView
+                android:id="@+id/affiliation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/letrasFicha"
+                tools:text="Z fighter"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="8dp"
+                android:layout_column="2"
+                android:layout_row="1"/>
 
-    <!-- Gender -->
-    <TextView
-        android:id="@+id/gender_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gender:"
-        app:layout_constraintTop_toBottomOf="@id/race_label"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/letrasFicha"
+                android:text="Gender"
+                android:layout_marginEnd="12dp"
+                android:textStyle="bold"
+                android:layout_column="2"
+                android:layout_row="2"/>
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/letrasFicha"
+                tools:text="Male"
+                android:layout_marginEnd="12dp"
+                android:layout_column="2"
+                android:layout_row="3"/>
 
-    <TextView
-        android:id="@+id/gender_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        app:layout_constraintTop_toBottomOf="@id/race_label"
-        app:layout_constraintStart_toEndOf="@+id/gender_label"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp" />
 
-    <!-- Description -->
-    <TextView
-        android:id="@+id/description_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description:"
-        app:layout_constraintTop_toBottomOf="@id/gender_label"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
 
-    <TextView
-        android:id="@+id/description_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        app:layout_constraintTop_toBottomOf="@id/gender_label"
-        app:layout_constraintStart_toEndOf="@+id/description_label"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp" />
 
-    <!-- Image -->
 
-    <!-- deletedAt -->
 
-    <ImageView
-        android:id="@+id/character_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/img_goku"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/description_label" />
 
-    <TextView
-        android:id="@+id/deletedAt_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="deletedAt:"
-        app:layout_constraintTop_toBottomOf="@id/character_image"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
+        </GridLayout>
 
-    <TextView
-        android:id="@+id/deletedAt_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="null"
-        app:layout_constraintTop_toBottomOf="@id/character_image"
-        app:layout_constraintStart_toEndOf="@+id/deletedAt_label"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/letrasFicha"
+                android:padding="16sp"
+                android:layout_marginStart="4sp"
+                android:layout_marginEnd="4sp"
+                tools:text="Maestro de artes marciales y mentor de Goku. Conocido bajo el nombre de Muten Rosh..."/>
+
+        </ScrollView>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

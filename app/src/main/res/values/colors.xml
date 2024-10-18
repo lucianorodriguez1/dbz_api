@@ -3,5 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="mi_color">#854C92</color>
+    <color name="letrasFicha">#D4AF37</color>
 
 </resources>

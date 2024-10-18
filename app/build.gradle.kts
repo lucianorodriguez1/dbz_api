@@ -33,7 +33,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    viewBinding { enable = true }
+    buildFeatures{
+        viewBinding=true
+    }
 }
+
+
 
 dependencies {
 
@@ -43,9 +50,12 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    // Agrega las referencias a las corrutinas aquí
+
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.picasso)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

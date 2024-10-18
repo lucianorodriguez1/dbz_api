@@ -19,7 +19,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var editContraseña : EditText
     lateinit var buttonRegistrar : Button
     lateinit var basededatos : FuncBBDD
-    lateinit var toolbar: Toolbar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +30,7 @@ class RegisterActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        toolbar = findViewById(R.id.toolbar)
-        toolbar.setLogo(R.drawable.ic_android_black_24dp)
-        setSupportActionBar(toolbar)
-        supportActionBar!!.title="tabajo practico"
+
         editTextNombre = findViewById(R.id.editTextNombre)
         editEmail = findViewById(R.id.editEmail)
         editContraseña = findViewById(R.id.editContraseña)

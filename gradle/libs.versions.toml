@@ -12,6 +12,8 @@ coroutines = "1.7.0"
 constraintlayout = "2.1.4"
 picasso = "2.71828"
 retrofit = "2.9.0"
+androidx-fragment = "1.6.1"
+
 
 
 [libraries]
@@ -26,6 +28,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "androidx-fragment" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 

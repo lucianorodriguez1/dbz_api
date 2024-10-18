@@ -1,6 +1,9 @@
 package com.example.dbz_api
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -24,9 +27,7 @@ class InformacionDePersonaje : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setLogo(R.drawable.ic_android_black_24dp)
-        supportActionBar!!.title="DBZ API"
-
-
+        supportActionBar!!.title=getString(R.string.titulo_toolbar)
 
         val nombre = intent.getStringExtra("nombre")
         val ki = intent.getStringExtra("ki")
@@ -51,4 +52,31 @@ class InformacionDePersonaje : AppCompatActivity() {
         Picasso.get().load(image).into(imageView)
 
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_listado -> {
+                val intent = Intent(this, ListadoPersonajesDbz::class.java)
+                startActivity(intent)
+            }
+            R.id.item_cerrar_sesion -> {
+                // Lógica para cerrar sesión
+                val preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+                preferencias.edit().clear().apply() // Eliminar las credenciales guardadas
+
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
 }

@@ -6,8 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment // Asegúrate de tener esto si usas Fragment
-import com.example.dbz_api.ListadoPersonajesFragment // Importa tu fragmento aquí
+
 
 class ListadoPersonajesDbz : AppCompatActivity() {
     lateinit var toolbar: Toolbar

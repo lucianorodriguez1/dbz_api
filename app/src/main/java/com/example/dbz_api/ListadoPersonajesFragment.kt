@@ -25,6 +25,7 @@ class ListadoPersonajesFragment : Fragment() {
     private lateinit var adapter: PersonajeAdapater
     private val personajes = mutableListOf<PersonajeResponse>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,12 +34,14 @@ class ListadoPersonajesFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initRecyclerView()
         mostrarPersonajes()
     }
+
 
     private fun initRecyclerView() {
         adapter = PersonajeAdapater(personajes) { personaje ->
@@ -55,9 +58,11 @@ class ListadoPersonajesFragment : Fragment() {
             startActivity(intent)
         }
 
+
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.recyclerView.adapter = adapter
     }
+
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
@@ -65,6 +70,7 @@ class ListadoPersonajesFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
 
     private fun mostrarPersonajes() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -85,9 +91,12 @@ class ListadoPersonajesFragment : Fragment() {
         }
     }
 
+
+
     private fun mostrarError() {
         Toast.makeText(activity, "Error al cargar datos", Toast.LENGTH_LONG).show()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -21,14 +21,12 @@ class ListadoPersonajesDbz : AppCompatActivity() {
         toolbar.setLogo(R.drawable.esfera)
         supportActionBar!!.title=getString(R.string.titulo_toolbar)
 
-        // Aquí es donde cargamos el fragmento
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.main, ListadoPersonajesFragment())
                 .commit()
         }
 
-        // Acceder al título del Toolbar y hacerlo clicable
         toolbar.post {
             for (i in 0 until toolbar.childCount) {
                 val view = toolbar.getChildAt(i)
@@ -44,10 +42,14 @@ class ListadoPersonajesDbz : AppCompatActivity() {
         }
     }
 
+
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu,menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_listado -> {
@@ -55,9 +57,8 @@ class ListadoPersonajesDbz : AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.item_cerrar_sesion -> {
-                // Lógica para cerrar sesión
                 val preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-                preferencias.edit().clear().apply() // Eliminar las credenciales guardadas
+                preferencias.edit().clear().apply()
 
                 val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

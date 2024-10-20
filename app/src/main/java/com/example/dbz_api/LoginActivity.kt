@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.ViewCompat
@@ -21,13 +22,14 @@ import com.example.dbz_api.baseDeDatos.FuncBBDD
 import com.example.dbz_api.baseDeDatos.SQLite
 
 class LoginActivity : AppCompatActivity() {
+
+    lateinit var toolbar: Toolbar
     private val PERMISSION_REQUEST_CODE = 1001
     lateinit var etUsuario: EditText
     lateinit var etPassword: EditText
     lateinit var cbRecordarusuario: CheckBox
     lateinit var btnRgegristarse: Button
     lateinit var btnIniciarsesion: Button
-
     lateinit var basededatos: FuncBBDD
 
 
@@ -42,6 +44,12 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        toolbar.setLogo(R.drawable.esfera)
+        supportActionBar!!.title=getString(R.string.titulo_toolbar)
+
         etUsuario = findViewById(R.id.etUsuario)
         etPassword = findViewById(R.id.etPassword)
         btnRgegristarse = findViewById(R.id.btnRegistrarse)
@@ -49,13 +57,14 @@ class LoginActivity : AppCompatActivity() {
         btnIniciarsesion = findViewById(R.id.btnIniciarsesion)
         basededatos = FuncBBDD()
 
-
         crearCanalNotificacion()
 
-        var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-        var usuarioGuardado = preferencias.getString(resources.getString(R.string.nombre_usuario), "")
-        var passwordGuardado = preferencias.getString(resources.getString(R.string.password_usuario), "")
-
+        var preferencias =
+            getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+        var usuarioGuardado =
+            preferencias.getString(resources.getString(R.string.nombre_usuario), "")
+        var passwordGuardado =
+            preferencias.getString(resources.getString(R.string.password_usuario), "")
 
         if (usuarioGuardado != "" && passwordGuardado != "") {
             var intent = Intent(this, MainActivity::class.java)
@@ -67,30 +76,46 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
         btnIniciarsesion.setOnClickListener {
             var mensaje = "boton iniciar sesion"
             if (etUsuario.text.toString().isEmpty() || etPassword.text.toString().isEmpty()) {
                 mensaje += " completar datos"
                 Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
             } else {
-                // Mover toda la lógica de verificación de login al callback
-                basededatos.verificarLogin(this, etUsuario.text.toString(), etPassword.text.toString()) { verificacionDeInicioSesion ->
-                    // Si el checkbox está marcado, guardamos las credenciales
+                basededatos.verificarLogin(
+                    this,
+                    etUsuario.text.toString(),
+                    etPassword.text.toString()
+                ) { verificacionDeInicioSesion ->
+
                     if (cbRecordarusuario.isChecked) {
-                        val preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-                        preferencias.edit().putString(resources.getString(R.string.nombre_usuario), etUsuario.text.toString()).apply()
-                        preferencias.edit().putString(resources.getString(R.string.password_usuario), etPassword.text.toString()).apply()
+                        val preferencias = getSharedPreferences(
+                            resources.getString(R.string.sp_credenciales),
+                            MODE_PRIVATE
+                        )
+                        preferencias.edit().putString(
+                            resources.getString(R.string.nombre_usuario),
+                            etUsuario.text.toString()
+                        ).apply()
+                        preferencias.edit().putString(
+                            resources.getString(R.string.password_usuario),
+                            etPassword.text.toString()
+                        ).apply()
                     }
 
-                if (cbRecordarusuario.isChecked) {
-                    var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-                    preferencias.edit().putString(resources.getString(R.string.nombre_usuario), etUsuario.text.toString()).apply()
+                    if (cbRecordarusuario.isChecked) {
+                        var preferencias = getSharedPreferences(
+                            resources.getString(R.string.sp_credenciales),
+                            MODE_PRIVATE
+                        )
+                        preferencias.edit().putString(
+                            resources.getString(R.string.nombre_usuario),
+                            etUsuario.text.toString()
+                        ).apply()
 
-                    // Verificar y solicitar permiso de notificación
-                    verificarPermisosNotificacion()
-
-                    Log.d("SharedPreferences", "Usuario guardado: ${etUsuario.text}")
-                }
+                        verificarPermisosNotificacion()
+                    }
 
                     if (verificacionDeInicioSesion != -1) {
 
@@ -98,7 +123,8 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                     } else {
 
-                        Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG)
+                            .show()
                     }
                 }
             }
@@ -106,7 +132,9 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+
     private fun crearCanalNotificacion() {
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Notificaciones"
             val descriptionText = "Canal para notificaciones de usuario"
@@ -117,41 +145,45 @@ class LoginActivity : AppCompatActivity() {
             val notificationManager = getSystemService(NotificationManager::class.java)
             notificationManager.createNotificationChannel(channel)
         }
+
+
     }
 
     private fun verificarPermisosNotificacion() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            // Verifica si ya se tiene el permiso
             if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                // Si no se tiene, solicita el permiso
-                requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), PERMISSION_REQUEST_CODE)
+                requestPermissions(
+                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
+                    PERMISSION_REQUEST_CODE
+                )
             } else {
-                // Si ya se tiene el permiso, muestra la notificación
                 mostrarNotificacion()
             }
         } else {
-            // En versiones anteriores, no se necesita solicitar el permiso
             mostrarNotificacion()
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             PERMISSION_REQUEST_CODE -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    // El permiso ha sido concedido
                     mostrarNotificacion()
                 } else {
-                    // El permiso ha sido denegado
-                    Toast.makeText(this, "Permiso de notificaciones denegado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Permiso de notificaciones denegado", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
     }
 
     private fun mostrarNotificacion() {
-        if(NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+        if (NotificationManagerCompat.from(this).areNotificationsEnabled()) {
             val builder = NotificationCompat.Builder(this, "canal_id")
                 .setSmallIcon(R.drawable.mi_imagen)
                 .setContentTitle("Usuario Recordado")
@@ -160,10 +192,12 @@ class LoginActivity : AppCompatActivity() {
 
             val notificationManager = NotificationManagerCompat.from(this)
             notificationManager.notify(1, builder.build())
-        }else{
+        } else {
 
-            Toast.makeText(this,"Las notificaciones fueron deshabilitadas",Toast.LENGTH_SHORT).show()
-            }
+            Toast.makeText(this, "Las notificaciones fueron deshabilitadas", Toast.LENGTH_SHORT)
+                .show()
+        }
     }
+
 
 }

@@ -11,8 +11,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class TerminosCondiciones : AppCompatActivity() {
+
     lateinit var btn_aceptar_tyc: Button
     lateinit var toolbar: Toolbar
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,10 +25,12 @@ class TerminosCondiciones : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setLogo(R.drawable.esfera)
-        supportActionBar!!.title="tabajo practico"
+        supportActionBar!!.title=getString(R.string.titulo_toolbar)
+
         btn_aceptar_tyc = findViewById(R.id.btn_aceptar_tyc)
         btn_aceptar_tyc.setOnClickListener{
             Log.i("TODO","se aceptan los terminos y condiciones")

@@ -7,17 +7,19 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.dbz_api.baseDeDatos.FuncBBDD
 
 class RegisterActivity : AppCompatActivity() {
 
-    lateinit var editTextNombre : EditText
-    lateinit var editEmail : EditText
-    lateinit var editContraseña : EditText
-    lateinit var buttonRegistrar : Button
-    lateinit var basededatos : FuncBBDD
+    lateinit var toolbar: Toolbar
+    lateinit var editTextNombre: EditText
+    lateinit var editEmail: EditText
+    lateinit var editContraseña: EditText
+    lateinit var buttonRegistrar: Button
+    lateinit var basededatos: FuncBBDD
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,24 +32,29 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
 
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        toolbar.setLogo(R.drawable.esfera)
+        supportActionBar!!.title=getString(R.string.titulo_toolbar)
+
+
         editTextNombre = findViewById(R.id.editTextNombre)
         editEmail = findViewById(R.id.editEmail)
         editContraseña = findViewById(R.id.editContraseña)
         buttonRegistrar = findViewById(R.id.buttonRegistrar)
+
         basededatos = FuncBBDD()
 
-        buttonRegistrar.setOnClickListener{
+        buttonRegistrar.setOnClickListener {
             val nombre = editTextNombre.text.toString()
             val email = editEmail.text.toString()
             val contraseña = editContraseña.text.toString()
-            if(nombre.isEmpty() || email.isEmpty() || contraseña.isEmpty()) {
-                Toast.makeText( this,"completar todos los datos", Toast.LENGTH_SHORT).show()
+            if (nombre.isEmpty() || email.isEmpty() || contraseña.isEmpty()) {
+                Toast.makeText(this, "completar todos los datos", Toast.LENGTH_SHORT).show()
 
-            }else{
+            } else {
                 Toast.makeText(this, "Registro completado con exito", Toast.LENGTH_SHORT).show()
-
-                basededatos.insertarEnBd(this,nombre,email,contraseña)
-
+                basededatos.insertarEnBd(this, nombre, email, contraseña)
                 var intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
 

@@ -15,7 +15,9 @@ import com.squareup.picasso.Picasso
 
 class InformacionDePersonaje : AppCompatActivity() {
     lateinit var toolbar: Toolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_informacion_de_personaje)
@@ -24,10 +26,16 @@ class InformacionDePersonaje : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.setLogo(R.drawable.esfera)
         supportActionBar!!.title=getString(R.string.titulo_toolbar)
+
+
+
 
         val nombre = intent.getStringExtra("nombre")
         val ki = intent.getStringExtra("ki")
@@ -38,7 +46,6 @@ class InformacionDePersonaje : AppCompatActivity() {
         val description = intent.getStringExtra("description")
         val image = intent.getStringExtra("image")
 
-        // Configurar los valores en los TextViews y la ImageView
         findViewById<TextView>(R.id.nombre).text = nombre
         findViewById<TextView>(R.id.baseKi).text = ki
         findViewById<TextView>(R.id.totalKi).text = maxKi
@@ -47,11 +54,9 @@ class InformacionDePersonaje : AppCompatActivity() {
         findViewById<TextView>(R.id.gender).text = gender
         findViewById<TextView>(R.id.descripcion).text = description
 
-        // Cargar la imagen con Picasso o Glide
         val imageView = findViewById<ImageView>(R.id.imgPersonaje)
         Picasso.get().load(image).into(imageView)
 
-        // Acceder al título del Toolbar y hacerlo clicable
         toolbar.post {
             for (i in 0 until toolbar.childCount) {
                 val view = toolbar.getChildAt(i)
@@ -68,10 +73,13 @@ class InformacionDePersonaje : AppCompatActivity() {
     }
 
 
+
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu,menu)
         return super.onCreateOptionsMenu(menu)
     }
+
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -81,10 +89,8 @@ class InformacionDePersonaje : AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.item_cerrar_sesion -> {
-                // Lógica para cerrar sesión
                 val preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-                preferencias.edit().clear().apply() // Eliminar las credenciales guardadas
-
+                preferencias.edit().clear().apply()
                 val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
@@ -93,4 +99,6 @@ class InformacionDePersonaje : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }

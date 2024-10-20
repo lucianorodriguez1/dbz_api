@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 
@@ -25,6 +26,21 @@ class ListadoPersonajesDbz : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.main, ListadoPersonajesFragment())
                 .commit()
+        }
+
+        // Acceder al título del Toolbar y hacerlo clicable
+        toolbar.post {
+            for (i in 0 until toolbar.childCount) {
+                val view = toolbar.getChildAt(i)
+                if (view is TextView && view.text == supportActionBar?.title) {
+                    view.setOnClickListener {
+                        // Redirigir a la ventana de inicio (MainActivity en este caso)
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                    break
+                }
+            }
         }
     }
 

@@ -26,7 +26,7 @@ class InformacionDePersonaje : AppCompatActivity() {
         }
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        toolbar.setLogo(R.drawable.ic_android_black_24dp)
+        toolbar.setLogo(R.drawable.esfera)
         supportActionBar!!.title=getString(R.string.titulo_toolbar)
 
         val nombre = intent.getStringExtra("nombre")
@@ -51,6 +51,20 @@ class InformacionDePersonaje : AppCompatActivity() {
         val imageView = findViewById<ImageView>(R.id.imgPersonaje)
         Picasso.get().load(image).into(imageView)
 
+        // Acceder al título del Toolbar y hacerlo clicable
+        toolbar.post {
+            for (i in 0 until toolbar.childCount) {
+                val view = toolbar.getChildAt(i)
+                if (view is TextView && view.text == supportActionBar?.title) {
+                    view.setOnClickListener {
+                        // Redirigir a la ventana de inicio (MainActivity en este caso)
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                    break
+                }
+            }
+        }
     }
 
 
@@ -58,6 +72,8 @@ class InformacionDePersonaje : AppCompatActivity() {
         menuInflater.inflate(R.menu.main_menu,menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_listado -> {
@@ -77,6 +93,4 @@ class InformacionDePersonaje : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 }

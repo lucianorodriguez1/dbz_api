@@ -38,6 +38,13 @@ android {
     buildFeatures{
         viewBinding=true
     }
+    sourceSets {
+        getByName("main") {
+            assets {
+                srcDirs("src\\main\\assets", "src\\main\\assets")
+            }
+        }
+    }
 }
 
 
@@ -61,5 +68,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.fragment)
+
+    implementation(libs.lottie)
+
 
 }

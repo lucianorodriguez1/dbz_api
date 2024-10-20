@@ -1,41 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     tools:context=".RegisterActivity"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/primary_layout"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/editTextNombre"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre de usuario"
-        android:inputType="text" />
-    <EditText
-        android:id="@+id/editEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="correo electronico"
-        android:inputType="textEmailAddress"/>
-    <EditText
-        android:id="@+id/editContraseña"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="contraseña"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de usuario"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="correo electronico"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/editContraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="contraseña"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/buttonRegistrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="registrarse"
+        android:text="Registrarse"
         android:textSize="20sp"
+        />
+
+    <include
+        layout="@layout/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         />
 
 </LinearLayout>

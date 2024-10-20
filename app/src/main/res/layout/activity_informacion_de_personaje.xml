@@ -176,7 +176,12 @@
                 tools:text="Maestro de artes marciales y mentor de Goku. Conocido bajo el nombre de Muten Rosh..."/>
 
         </ScrollView>
-
+        <include
+            layout="@layout/footer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

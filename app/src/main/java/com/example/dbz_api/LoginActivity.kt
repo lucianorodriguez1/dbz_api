@@ -78,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         btnIniciarsesion.setOnClickListener {
-            var mensaje = "boton iniciar sesion"
+            var mensaje = ""
             if (etUsuario.text.toString().isEmpty() || etPassword.text.toString().isEmpty()) {
                 mensaje += " completar datos"
                 Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()

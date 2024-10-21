@@ -10,21 +10,22 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/primary_layout"
-        />
+        layout="@layout/primary_layout" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/contenedorImagen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="100dp"
-        app:cardElevation="4dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/fondo1"
-        android:layout_marginBottom="5dp">
+        app:cardCornerRadius="100dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,130 +43,133 @@
         android:id="@+id/contenedorTextos"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/fondoficha"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/contenedorImagen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/fondoficha">
+        app:layout_constraintTop_toBottomOf="@+id/contenedorImagen">
 
         <TextView
             android:id="@+id/nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="24dp"
-            android:padding="8dp"
             android:layout_marginStart="12dp"
+            android:padding="8dp"
             android:textColor="@color/letrasFicha"
-            tools:text="Nombre">
-        </TextView>
+            android:textSize="24dp"
+            android:textStyle="bold"
+            tools:text="Nombre"></TextView>
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:columnCount="3"
-            android:rowCount="6"
             android:padding="16sp"
-            android:layout_gravity="center">
+            android:rowCount="6">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginStart="12dp"
                 android:text="Base Ki"
                 android:textColor="@color/letrasFicha"
-                android:layout_marginStart="12dp"
-                android:textStyle="bold"
-                android:layout_column="0" />
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/baseKi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/letrasFicha"
-                tools:text="10000"
+                android:layout_row="1"
+                android:layout_column="0"
                 android:layout_marginStart="12dp"
                 android:layout_marginBottom="8dp"
-                android:layout_column="0"
-                android:layout_row="1"/>
+                android:textColor="@color/letrasFicha"
+                tools:text="10000" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/letrasFicha"
-                android:text="Total Ki"
-                android:layout_marginStart="12dp"
-                android:textStyle="bold"
+                android:layout_row="2"
                 android:layout_column="0"
-                android:layout_row="2"/>
+                android:layout_marginStart="12dp"
+                android:text="Total Ki"
+                android:textColor="@color/letrasFicha"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/totalKi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/letrasFicha"
-                tools:text="90 septillon"
+                android:layout_row="3"
+                android:layout_column="0"
                 android:layout_marginStart="12dp"
                 android:layout_marginBottom="8dp"
-                android:layout_column="0"
-                android:layout_row="3"/>
+                android:textColor="@color/letrasFicha"
+                tools:text="90 septillon" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/letrasFicha"
-                android:text="Race"
-                android:layout_marginStart="12dp"
-                android:textStyle="bold"
+                android:layout_row="4"
                 android:layout_column="0"
-                android:layout_row="4"/>
+                android:layout_marginStart="12dp"
+                android:text="Race"
+                android:textColor="@color/letrasFicha"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/race"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/letrasFicha"
-                tools:text="Saiyan"
-                android:layout_marginStart="12dp"
+                android:layout_row="5"
                 android:layout_column="0"
-                android:layout_row="5"/>
+                android:layout_marginStart="12dp"
+                android:textColor="@color/letrasFicha"
+                tools:text="Saiyan" />
 
-            <!-- Separador en columna 1 -->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/letrasFicha"
-                android:text="Afilliation"
-                android:textStyle="bold"
-                android:layout_marginEnd="12dp"
+                android:layout_row="0"
                 android:layout_column="2"
-                android:layout_row="0"/>
+                android:layout_marginEnd="12dp"
+                android:text="Afilliation"
+                android:textColor="@color/letrasFicha"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/affiliation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/letrasFicha"
-                tools:text="Z fighter"
+                android:layout_row="1"
+                android:layout_column="2"
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="8dp"
-                android:layout_column="2"
-                android:layout_row="1"/>
+                android:textColor="@color/letrasFicha"
+                tools:text="Z fighter" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/letrasFicha"
-                android:text="Gender"
-                android:layout_marginEnd="12dp"
-                android:textStyle="bold"
+                android:layout_row="2"
                 android:layout_column="2"
-                android:layout_row="2"/>
+                android:layout_marginEnd="12dp"
+                android:text="Gender"
+                android:textColor="@color/letrasFicha"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/letrasFicha"
-                tools:text="Male"
-                android:layout_marginEnd="12dp"
+                android:layout_row="3"
                 android:layout_column="2"
-                android:layout_row="3"/>
+                android:layout_marginEnd="12dp"
+                android:textColor="@color/letrasFicha"
+                tools:text="Male" />
 
         </GridLayout>
 
@@ -177,14 +181,22 @@
                 android:id="@+id/descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/letrasFicha"
-                android:padding="16sp"
                 android:layout_marginStart="4sp"
                 android:layout_marginEnd="4sp"
-                tools:text="Maestro de artes marciales y mentor de Goku. Conocido bajo el nombre de Muten Rosh..."/>
+                android:padding="16sp"
+                android:textColor="@color/letrasFicha"
+                tools:text="Maestro de artes marciales y mentor de Goku. Conocido bajo el nombre de Muten Rosh..." />
+
 
         </ScrollView>
 
+
     </LinearLayout>
 
+    <include
+        layout="@layout/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

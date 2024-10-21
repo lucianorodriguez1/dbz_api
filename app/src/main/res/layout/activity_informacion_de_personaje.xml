@@ -5,30 +5,38 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondoficha"
     tools:context=".InformacionDePersonaje">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/primary_layout"
         />
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/contenedorImagen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="vertical"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="4dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:background="@drawable/fondo1"
         android:layout_marginBottom="5dp">
-        <ImageView
-            android:id="@+id/imgPersonaje"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:src="@drawable/ic_person">
+            android:layout_height="wrap_content"
+            android:background="@drawable/fondo1"> <!-- Usa el drawable aquí -->
 
-        </ImageView>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imgPersonaje"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:src="@drawable/ic_person" />
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:id="@+id/contenedorTextos"
@@ -176,12 +184,7 @@
                 tools:text="Maestro de artes marciales y mentor de Goku. Conocido bajo el nombre de Muten Rosh..."/>
 
         </ScrollView>
-        <include
-            layout="@layout/footer_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

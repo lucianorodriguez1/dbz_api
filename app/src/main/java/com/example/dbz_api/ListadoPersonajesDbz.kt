@@ -20,6 +20,7 @@ class ListadoPersonajesDbz : AppCompatActivity() {
         setSupportActionBar(toolbar)
         toolbar.setLogo(R.drawable.esfera)
         supportActionBar!!.title=getString(R.string.titulo_toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()

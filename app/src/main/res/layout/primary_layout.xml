@@ -7,4 +7,6 @@
     android:elevation="8dp"
     app:titleTextColor="@color/letrasFicha"
     app:subtitleTextColor="@color/letrasFicha"
-    android:layout_marginBottom="15dp" />
+    android:layout_marginBottom="15dp">
+
+</androidx.appcompat.widget.Toolbar>
